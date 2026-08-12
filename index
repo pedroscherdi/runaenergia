@@ -1,0 +1,1352 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Núra Energia — A conta de luz da sua empresa, olhada de perto</title>
+<meta name="description" content="A gente revisa o enquadramento tarifário, confere cada fatura e avisa antes de a demanda estourar. Sem obra, sem trocar de distribuidora. Diagnóstico gratuito a partir de 12 faturas.">
+<meta name="theme-color" content="#F3F0EA" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0D2839" media="(prefers-color-scheme: dark)">
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Núra Energia">
+<meta property="og:title" content="Núra Energia — A conta de luz da sua empresa, olhada de perto">
+<meta property="og:description" content="Ninguém na sua empresa tem tempo de conferir fatura de energia linha por linha. A gente tem.">
+<meta property="og:url" content="https://nuraenergia.com.br/">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="canonical" href="https://nuraenergia.com.br/">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230E2A3C'/><path d='M14 76 L38 52 L56 26 L88 26' fill='none' stroke='%23C39B5A' stroke-width='10' stroke-linecap='round' stroke-linejoin='round'/></svg>">
+
+<style>
+/* ---------------------------------------------------------------
+   NÚRA ENERGIA
+   Navy e dourado da marca sobre neutros quentes.
+   Serifa humanista nos títulos, sans humanista nos rótulos:
+   a página conversa em vez de instruir.
+   --------------------------------------------------------------- */
+:root{
+  --ground:#F3F0EA;
+  --surface:#FAF8F4;
+  --raise:#FFFFFF;
+
+  --ink:#0E2A3C;          /* navy da marca */
+  --ink-2:#4A6070;
+  --ink-3:#8B9299;
+
+  --line:#DED8CE;
+  --line-2:#E9E4DC;
+
+  --accent:#C39B5A;       /* dourado — preenchimentos e marca */
+  --accent-2:#A98243;     /* dourado — hover */
+  --accent-strong:#85601F;/* dourado legível sobre o fundo claro */
+  --on-accent:#0E2A3C;    /* texto sobre dourado */
+
+  --peak:#A33B2A;         /* custo / penalidade */
+  --peak-soft:rgba(163,59,42,.12);
+
+  --mark-field:#0E2A3C;
+  --mark-line:#C39B5A;
+
+  /* bloco de oferta — escuro nos dois temas, por isso tem tokens próprios */
+  --plan-bg:#0E2A3C;
+  --plan-ink:#F2EEE7;
+  --plan-ink-2:#A9BCC5;
+  --plan-gold:#D2AB70;
+  --plan-line:rgba(242,238,231,.15);
+
+  --shadow:0 1px 2px rgba(14,42,60,.05), 0 18px 40px -24px rgba(14,42,60,.30);
+
+  --serif:Charter,"Iowan Old Style",Constantia,"Palatino Linotype",Georgia,serif;
+  --sans:Corbel,Candara,"Avenir Next",Optima,"Segoe UI",system-ui,sans-serif;
+  --mono:Consolas,"SF Mono",Menlo,"DejaVu Sans Mono",ui-monospace,monospace;
+
+  --pad:clamp(1.25rem,5vw,4.5rem);
+  --maxw:1180px;
+}
+
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#0D2839;
+    --surface:#143446;
+    --raise:#1A4055;
+
+    --ink:#F2EEE7;
+    --ink-2:#A9BCC5;
+    --ink-3:#7A8F9B;
+
+    --line:#274C60;
+    --line-2:#1B3E50;
+
+    --accent:#D2AB70;
+    --accent-2:#E2BE8A;
+    --accent-strong:#DCBC86;
+    --on-accent:#0D2839;
+
+    --peak:#E08268;
+    --peak-soft:rgba(224,130,104,.16);
+
+    --mark-field:#D2AB70;
+    --mark-line:#0D2839;
+
+    /* no escuro o cartão vira superfície elevada, senão some no fundo */
+    --plan-bg:#1A4055;
+    --plan-ink:#F2EEE7;
+    --plan-ink-2:#A9BCC5;
+    --plan-gold:#DCBC86;
+    --plan-line:rgba(242,238,231,.17);
+
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 18px 44px -24px rgba(0,0,0,.75);
+  }
+}
+
+:root[data-theme="dark"]{
+  --ground:#0D2839;
+  --surface:#143446;
+  --raise:#1A4055;
+
+  --ink:#F2EEE7;
+  --ink-2:#A9BCC5;
+  --ink-3:#7A8F9B;
+
+  --line:#274C60;
+  --line-2:#1B3E50;
+
+  --accent:#D2AB70;
+  --accent-2:#E2BE8A;
+  --accent-strong:#DCBC86;
+  --on-accent:#0D2839;
+
+  --peak:#E08268;
+  --peak-soft:rgba(224,130,104,.16);
+
+  --mark-field:#D2AB70;
+  --mark-line:#0D2839;
+
+  --plan-bg:#1A4055;
+  --plan-ink:#F2EEE7;
+  --plan-ink-2:#A9BCC5;
+  --plan-gold:#DCBC86;
+  --plan-line:rgba(242,238,231,.17);
+
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 18px 44px -24px rgba(0,0,0,.75);
+}
+
+*,*::before,*::after{box-sizing:border-box;}
+
+html{scroll-behavior:smooth;}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto;}}
+
+body{
+  margin:0;
+  background:var(--ground);
+  color:var(--ink);
+  font-family:var(--serif);
+  font-size:1.09375rem;
+  line-height:1.72;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+
+h1,h2,h3{
+  font-family:var(--serif);
+  font-weight:700;
+  line-height:1.14;
+  letter-spacing:-.008em;
+  text-wrap:balance;
+  margin:0;
+}
+
+p{margin:0;}
+a{color:inherit;}
+
+:focus-visible{
+  outline:2px solid var(--accent-strong);
+  outline-offset:3px;
+  border-radius:4px;
+}
+
+.skip{
+  position:absolute;
+  left:-9999px;
+  top:0;
+  background:var(--accent);
+  color:var(--on-accent);
+  font-family:var(--sans);
+  font-size:.875rem;
+  text-decoration:none;
+  padding:.75rem 1.25rem;
+  border-radius:0 0 6px 0;
+  z-index:100;
+}
+.skip:focus{left:0;}
+
+.wrap{
+  max-width:var(--maxw);
+  margin-inline:auto;
+  padding-inline:var(--pad);
+}
+
+/* Rótulo — versalete em vez de caixa alta gritada */
+.lbl{
+  font-family:var(--sans);
+  font-size:.8125rem;
+  font-variant-caps:all-small-caps;
+  letter-spacing:.07em;
+  color:var(--ink-3);
+  margin:0;
+}
+
+/* ---------------------------------------------------------------
+   Marca — NÚRA em tinta, ENERGIA em dourado
+   --------------------------------------------------------------- */
+.mark{width:30px;height:30px;flex:none;display:block;}
+.mark__field{fill:var(--mark-field);}
+.mark__line{
+  fill:none;
+  stroke:var(--mark-line);
+  stroke-width:2.4;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:.7rem;
+  text-decoration:none;
+  margin-right:auto;
+}
+.brand__txt{
+  display:flex;
+  align-items:baseline;
+  gap:.4em;
+  font-family:var(--sans);
+  font-weight:600;
+  font-size:1.1875rem;
+  line-height:1;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+}
+.brand__name{color:var(--ink);}
+.brand__sub{color:var(--accent-strong);}
+
+/* ---------------------------------------------------------------
+   Nav
+   --------------------------------------------------------------- */
+.nav{
+  position:sticky;
+  top:0;
+  z-index:50;
+  background:color-mix(in srgb, var(--ground) 90%, transparent);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line-2);
+}
+.nav__bar{
+  display:flex;
+  align-items:center;
+  gap:1.5rem;
+  height:76px;
+}
+.nav__links{
+  display:flex;
+  align-items:center;
+  gap:2rem;
+  list-style:none;
+  margin:0;
+  padding:0;
+}
+.nav__links a{
+  font-family:var(--sans);
+  font-size:.9375rem;
+  color:var(--ink-2);
+  text-decoration:none;
+  padding-block:.4rem;
+  border-bottom:1px solid transparent;
+  transition:color .18s ease, border-color .18s ease;
+}
+.nav__links a:hover{color:var(--ink);border-bottom-color:var(--accent-strong);}
+
+.nav__toggle{
+  display:none;
+  width:44px;height:44px;
+  margin-right:-8px;
+  background:none;
+  border:1px solid var(--line);
+  border-radius:6px;
+  color:var(--ink);
+  cursor:pointer;
+  align-items:center;
+  justify-content:center;
+}
+.nav__toggle span{
+  position:relative;
+  display:block;
+  width:17px;height:1.5px;
+  background:currentColor;
+  transition:transform .22s ease, background-color .12s ease;
+}
+.nav__toggle span::before,
+.nav__toggle span::after{
+  content:"";
+  position:absolute;
+  left:0;
+  width:17px;height:1.5px;
+  background:currentColor;
+  transition:transform .22s ease;
+}
+.nav__toggle span::before{top:-5px;}
+.nav__toggle span::after{top:5px;}
+.nav__toggle[aria-expanded="true"] span{background:transparent;}
+.nav__toggle[aria-expanded="true"] span::before{transform:translateY(5px) rotate(45deg);}
+.nav__toggle[aria-expanded="true"] span::after{transform:translateY(-5px) rotate(-45deg);}
+
+/* ---------------------------------------------------------------
+   Botões — dourado com texto navy, como no wordmark
+   --------------------------------------------------------------- */
+.btn{
+  display:inline-flex;
+  align-items:center;
+  gap:.6rem;
+  font-family:var(--sans);
+  font-size:.9375rem;
+  font-weight:600;
+  text-decoration:none;
+  padding:.85rem 1.5rem;
+  border-radius:7px;
+  border:1px solid transparent;
+  cursor:pointer;
+  transition:background-color .18s ease, border-color .18s ease, color .18s ease, transform .18s ease;
+}
+.btn--solid{background:var(--accent);color:var(--on-accent);}
+.btn--solid:hover{background:var(--accent-2);transform:translateY(-1px);}
+.btn--ghost{border-color:var(--line);color:var(--ink);}
+.btn--ghost:hover{border-color:var(--accent);color:var(--accent-strong);}
+.btn__arrow{transition:transform .18s ease;}
+.btn:hover .btn__arrow{transform:translateX(3px);}
+.btn__ico{
+  width:1.2em;height:1.2em;
+  flex:none;display:block;
+  fill:currentColor;
+}
+
+/* ---------------------------------------------------------------
+   Seções
+   --------------------------------------------------------------- */
+.sec{padding-block:clamp(3.75rem,8vw,6.75rem);}
+.sec--edge{border-top:1px solid var(--line-2);}
+
+.sec__head{
+  display:flex;
+  flex-direction:column;
+  gap:.9rem;
+  max-width:54ch;
+  margin-bottom:clamp(2.25rem,4.5vw,3.5rem);
+}
+.sec__head h2{font-size:clamp(1.75rem,3.4vw,2.5rem);}
+.sec__head p{color:var(--ink-2);max-width:48ch;}
+
+/* ---------------------------------------------------------------
+   Hero
+   --------------------------------------------------------------- */
+.hero{
+  display:grid;
+  grid-template-columns:1.04fr .96fr;
+  gap:clamp(2.5rem,5vw,4.5rem);
+  align-items:center;
+  padding-block:clamp(3.25rem,6.5vw,6rem);
+}
+.hero__copy{display:flex;flex-direction:column;gap:1.6rem;}
+.hero h1{font-size:clamp(2.25rem,5vw,3.75rem);line-height:1.1;}
+.hero h1 em{font-style:italic;color:var(--accent-strong);}
+.hero__lead{
+  color:var(--ink-2);
+  font-size:clamp(1.09375rem,1.5vw,1.1875rem);
+  max-width:46ch;
+}
+.hero__cta{display:flex;flex-wrap:wrap;gap:.75rem;align-items:center;}
+.hero__note{
+  display:flex;
+  align-items:center;
+  gap:.6rem;
+  color:var(--ink-3);
+  font-family:var(--sans);
+  font-size:.875rem;
+}
+.hero__note::before{
+  content:"";
+  width:7px;height:7px;
+  border-radius:50%;
+  background:var(--accent-strong);
+  flex:none;
+}
+
+/* Painel do gráfico */
+.panel{
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:10px;
+  box-shadow:var(--shadow);
+  padding:1.35rem 1.35rem 1.1rem;
+  margin:0;
+  display:flex;
+  flex-direction:column;
+  gap:.9rem;
+}
+.panel__top{
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  gap:1rem;
+  flex-wrap:wrap;
+}
+.panel__title{
+  font-family:var(--serif);
+  font-weight:700;
+  font-size:1.0625rem;
+}
+.chart{
+  position:relative;
+  width:100%;
+  aspect-ratio:16/11;
+}
+.chart canvas{position:absolute;inset:0;width:100%;height:100%;display:block;}
+.panel__key{
+  display:flex;
+  flex-wrap:wrap;
+  gap:.6rem 1.15rem;
+  padding-top:.85rem;
+  border-top:1px solid var(--line-2);
+}
+.key{
+  display:flex;
+  align-items:center;
+  gap:.5rem;
+  font-family:var(--sans);
+  font-size:.8125rem;
+  color:var(--ink-2);
+}
+.key i{display:block;width:16px;height:2px;background:var(--ink-3);flex:none;}
+.key--now i{background:var(--accent-strong);}
+.key--dem i{background:repeating-linear-gradient(to right,var(--peak) 0 4px,transparent 4px 8px);}
+.key--over i{height:10px;background:var(--peak-soft);border-top:1px solid var(--peak);}
+.panel__note{
+  color:var(--ink-2);
+  font-size:.9375rem;
+  line-height:1.6;
+}
+
+/* ---------------------------------------------------------------
+   Onde vaza
+   --------------------------------------------------------------- */
+.leaks{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1px;
+  background:var(--line-2);
+  border-block:1px solid var(--line-2);
+}
+.leak{
+  background:var(--ground);
+  padding:clamp(1.75rem,3vw,2.5rem) clamp(1rem,2vw,1.75rem);
+  display:flex;
+  flex-direction:column;
+  gap:.65rem;
+}
+.leak h3{font-size:1.1875rem;}
+.leak p{color:var(--ink-2);font-size:.96875rem;line-height:1.62;}
+
+/* ---------------------------------------------------------------
+   Serviços
+   --------------------------------------------------------------- */
+.cards{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1.25rem;
+}
+.card{
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:10px;
+  padding:clamp(1.5rem,2.6vw,2rem);
+  display:flex;
+  flex-direction:column;
+  gap:.85rem;
+  transition:background-color .2s ease, border-color .2s ease;
+}
+.card:hover{background:var(--raise);border-color:var(--accent);}
+.card h3{font-size:1.25rem;}
+.card p{color:var(--ink-2);font-size:.96875rem;line-height:1.64;}
+.card__meta{
+  margin-top:auto;
+  padding-top:1rem;
+  border-top:1px solid var(--line-2);
+  font-family:var(--sans);
+  font-size:.875rem;
+  color:var(--accent-strong);
+}
+
+/* ---------------------------------------------------------------
+   Processo — numerado porque é de fato uma sequência
+   --------------------------------------------------------------- */
+.steps{display:flex;flex-direction:column;}
+.step{
+  display:grid;
+  grid-template-columns:4.5rem 1fr minmax(0,20ch);
+  gap:clamp(1rem,3vw,3rem);
+  padding-block:clamp(1.75rem,3.2vw,2.35rem);
+  border-top:1px solid var(--line);
+  align-items:start;
+}
+.step:last-child{border-bottom:1px solid var(--line);}
+.step__n{
+  font-family:var(--serif);
+  font-weight:700;
+  font-size:1.75rem;
+  line-height:1.2;
+  color:var(--accent-strong);
+}
+.step__body{display:flex;flex-direction:column;gap:.5rem;}
+.step__body h3{font-size:1.375rem;}
+.step__body p{color:var(--ink-2);}
+.step__when{
+  font-family:var(--sans);
+  font-size:.875rem;
+  color:var(--ink-3);
+  padding-top:.5rem;
+}
+
+/* ---------------------------------------------------------------
+   Oferta Grupo B
+   --------------------------------------------------------------- */
+.plan{
+  background:var(--plan-bg);
+  color:var(--plan-ink);
+  border-radius:12px;
+  box-shadow:var(--shadow);
+  display:grid;
+  grid-template-columns:1.25fr .75fr;
+  gap:clamp(1.75rem,4vw,3.5rem);
+  padding:clamp(1.75rem,4vw,3rem);
+  align-items:center;
+}
+.plan__body{display:flex;flex-direction:column;gap:1rem;}
+.plan__name{font-size:clamp(1.5rem,2.8vw,2rem);color:var(--plan-ink);}
+.plan__desc{color:var(--plan-ink-2);max-width:44ch;}
+.plan__list{
+  list-style:none;
+  margin:.25rem 0 0;
+  padding:0;
+  display:flex;
+  flex-direction:column;
+  gap:.6rem;
+}
+.plan__list li{
+  display:flex;
+  align-items:flex-start;
+  gap:.75rem;
+  color:var(--plan-ink);
+  font-size:1rem;
+  line-height:1.55;
+}
+.plan__list li::before{
+  content:"";
+  flex:none;
+  width:.42em;
+  height:.78em;
+  margin-top:.4em;
+  border:solid var(--plan-gold);
+  border-width:0 2px 2px 0;
+  transform:rotate(45deg);
+}
+
+.plan__price{
+  display:flex;
+  flex-direction:column;
+  gap:.5rem;
+  padding-left:clamp(1.25rem,3vw,2.5rem);
+  border-left:1px solid var(--plan-line);
+}
+.plan__eyebrow{
+  font-family:var(--sans);
+  font-size:.8125rem;
+  font-variant-caps:all-small-caps;
+  letter-spacing:.07em;
+  color:var(--plan-ink-2);
+  margin:0;
+}
+.plan__was{
+  font-family:var(--sans);
+  font-size:1rem;
+  color:var(--plan-ink-2);
+  text-decoration:line-through;
+  margin:0;
+}
+.plan__now{
+  font-family:var(--serif);
+  font-weight:700;
+  font-size:clamp(2.75rem,6vw,3.75rem);
+  line-height:1;
+  color:var(--plan-gold);
+  margin:0;
+}
+.plan__then{
+  font-family:var(--sans);
+  font-size:.9375rem;
+  color:var(--plan-ink-2);
+  margin:0;
+}
+.plan__cta{margin-top:.75rem;justify-content:center;}
+.plan__fine{
+  font-family:var(--sans);
+  font-size:.8125rem;
+  color:var(--plan-ink-2);
+  margin:0;
+}
+
+/* ---------------------------------------------------------------
+   Perguntas
+   --------------------------------------------------------------- */
+.qa{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:clamp(1.75rem,3.5vw,3rem);
+}
+.qa__item{display:flex;flex-direction:column;gap:.5rem;}
+.qa__item h3{font-size:1.1875rem;}
+.qa__item p{color:var(--ink-2);font-size:.96875rem;line-height:1.66;}
+
+/* ---------------------------------------------------------------
+   CTA final
+   --------------------------------------------------------------- */
+.close{
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:clamp(2.25rem,5vw,3.75rem);
+  display:grid;
+  grid-template-columns:1.15fr .85fr;
+  gap:clamp(2rem,4vw,4rem);
+  align-items:center;
+}
+.close h2{font-size:clamp(1.75rem,3.5vw,2.75rem);}
+.close__copy{display:flex;flex-direction:column;gap:1.15rem;}
+.close__copy p{color:var(--ink-2);max-width:44ch;}
+.close__sign{
+  font-family:var(--sans);
+  font-size:.9375rem;
+  color:var(--ink-3);
+}
+.close__acts{display:flex;flex-direction:column;gap:.75rem;align-items:stretch;}
+.close__acts .btn{justify-content:center;}
+.close__fine{
+  font-family:var(--sans);
+  font-size:.875rem;
+  line-height:1.6;
+  color:var(--ink-3);
+  text-align:center;
+}
+
+/* ---------------------------------------------------------------
+   Rodapé
+   --------------------------------------------------------------- */
+.foot{
+  border-top:1px solid var(--line-2);
+  padding-block:2.5rem 3rem;
+}
+.foot__grid{
+  display:flex;
+  flex-wrap:wrap;
+  gap:1.5rem 3rem;
+  align-items:center;
+  justify-content:space-between;
+}
+.foot__links{
+  display:flex;
+  flex-wrap:wrap;
+  gap:1.5rem;
+  list-style:none;
+  margin:0;padding:0;
+}
+.foot__links a{
+  font-family:var(--sans);
+  font-size:.9375rem;
+  color:var(--ink-2);
+  text-decoration:none;
+}
+.foot__links a:hover{color:var(--accent-strong);}
+
+/* ---------------------------------------------------------------
+   Reveal
+   --------------------------------------------------------------- */
+.rv{opacity:0;transform:translateY(14px);transition:opacity .6s ease, transform .6s cubic-bezier(.22,.61,.36,1);}
+.rv.in{opacity:1;transform:none;}
+
+/* ---------------------------------------------------------------
+   Responsivo
+   --------------------------------------------------------------- */
+@media (max-width:1000px){
+  .hero{grid-template-columns:1fr;}
+  .leaks{grid-template-columns:1fr;}
+  .cards{grid-template-columns:1fr;}
+  .qa{grid-template-columns:1fr;}
+  .close{grid-template-columns:1fr;}
+  .plan{grid-template-columns:1fr;}
+  .plan__price{
+    padding-left:0;
+    padding-top:1.5rem;
+    border-left:0;
+    border-top:1px solid var(--plan-line);
+  }
+}
+
+@media (max-width:860px){
+  .nav__toggle{display:flex;}
+  .nav__links{
+    position:absolute;
+    top:76px;left:0;right:0;
+    flex-direction:column;
+    align-items:stretch;
+    gap:0;
+    background:var(--ground);
+    border-bottom:1px solid var(--line);
+    padding:.5rem var(--pad) 1.25rem;
+    display:none;
+  }
+  .nav__links.open{display:flex;}
+  .nav__links li{border-top:1px solid var(--line-2);}
+  .nav__links li:first-child{border-top:0;}
+  .nav__links a{display:block;padding:.9rem 0;border-bottom:0;}
+  .nav__links .btn{margin-top:1rem;justify-content:center;}
+  .step{grid-template-columns:3.25rem 1fr;}
+  .step__when{grid-column:2;padding-top:0;}
+}
+
+@media (max-width:560px){
+  .hero__cta{flex-direction:column;align-items:stretch;}
+  .hero__cta .btn{justify-content:center;}
+  .brand__txt{font-size:1.0625rem;letter-spacing:.08em;}
+}
+
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms !important;transition-duration:.01ms !important;}
+  .rv{opacity:1;transform:none;}
+}
+</style>
+</head>
+<body>
+
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+
+<header class="nav">
+  <div class="wrap nav__bar">
+    <a class="brand" href="#topo">
+      <svg class="mark" viewBox="0 0 24 24" aria-hidden="true">
+        <rect class="mark__field" x="0" y="0" width="24" height="24" rx="5"/>
+        <path class="mark__line" d="M4 18 L9.5 12.5 L13.5 6.8 L20 6.8"/>
+      </svg>
+      <span class="brand__txt">
+        <span class="brand__name">Núra</span>
+        <span class="brand__sub">Energia</span>
+      </span>
+    </a>
+
+    <button class="nav__toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Abrir menu">
+      <span></span>
+    </button>
+
+    <ul class="nav__links" id="navLinks">
+      <li><a href="#vazamentos">Onde vaza</a></li>
+      <li><a href="#servicos">O que fazemos</a></li>
+      <li><a href="#grupob">Grupo B</a></li>
+      <li><a href="#processo">Como funciona</a></li>
+      <li><a href="#perguntas">Perguntas</a></li>
+      <li><a class="btn btn--solid" href="#contato">Falar com a gente</a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="topo">
+  <span id="conteudo"></span>
+
+  <!-- ============ HERO ============ -->
+  <section class="wrap hero">
+    <div class="hero__copy">
+      <p class="lbl">Para quem paga a conta de luz da operação</p>
+      <h1>A sua conta de energia merece <em>alguém olhando</em>.</h1>
+      <p class="hero__lead">
+        Ninguém na sua empresa tem tempo de conferir fatura de energia linha por
+        linha, todo mês. A gente tem. Revisamos o enquadramento tarifário, olhamos
+        cada conta que chega e avisamos antes de a demanda estourar — sem obra e
+        sem trocar de distribuidora.
+      </p>
+      <div class="hero__cta">
+        <a class="btn btn--solid" href="#contato">
+          Quero um diagnóstico <span class="btn__arrow" aria-hidden="true">&rarr;</span>
+        </a>
+        <a class="btn btn--ghost" href="#processo">Entender como funciona</a>
+      </div>
+      <p class="hero__note">É só mandar 12 faturas. A gente responde em 5 dias úteis, de graça.</p>
+    </div>
+
+    <figure class="panel">
+      <div class="panel__top">
+        <span class="panel__title">Um dia na vida de uma fábrica</span>
+        <span class="lbl">exemplo ilustrativo &middot; kW</span>
+      </div>
+      <div class="chart">
+        <canvas id="loadChart" role="img"
+          aria-label="Gráfico ilustrativo de 24 horas. A linha tracejada cinza mostra a demanda antes do acompanhamento, passando da demanda contratada de 110 kW entre as 18h e as 21h. A linha dourada mostra a mesma operação depois do acompanhamento, mantida abaixo do contratado o dia inteiro."></canvas>
+      </div>
+      <figcaption class="panel__key">
+        <span class="key"><i></i> Antes</span>
+        <span class="key key--now"><i></i> Com a Núra</span>
+        <span class="key key--dem"><i></i> Demanda contratada</span>
+        <span class="key key--over"><i></i> Ultrapassagem</span>
+      </figcaption>
+      <p class="panel__note">
+        Toda noite, entre seis e nove, essa fábrica passava do que tinha contratado —
+        e pagava a mais por isso sem saber. Depois do ajuste, não passa mais.
+      </p>
+    </figure>
+  </section>
+
+  <!-- ============ ONDE VAZA ============ -->
+  <section class="leaks" id="vazamentos" aria-label="Onde vaza dinheiro na conta de luz">
+    <div class="leak">
+      <p class="lbl">Demanda</p>
+      <h3>Você contratou o número errado</h3>
+      <p>
+        Se contratou demais, paga todo mês por uma capacidade que não usa. Se
+        contratou de menos, a ultrapassagem entra na fatura mais cara. O número certo
+        muda quando a operação muda — e quase ninguém volta lá para revisar.
+      </p>
+    </div>
+    <div class="leak">
+      <p class="lbl">Reativo</p>
+      <h3>Tem uma cobrança que ninguém entende</h3>
+      <p>
+        Quando o fator de potência cai abaixo de 0,92, aparece uma linha extra na
+        conta. Ela não se parece com consumo, então passa batida mês após mês. É
+        dinheiro saindo por uma porta que dá para fechar.
+      </p>
+    </div>
+    <div class="leak">
+      <p class="lbl">Tarifa</p>
+      <h3>Talvez você esteja na modalidade errada</h3>
+      <p>
+        Modalidade, subgrupo, ponta e fora ponta definem o preço de cada quilowatt.
+        Isso foi decidido uma vez, faz anos, e nunca mais foi conferido. Só aparece
+        quando alguém abre doze faturas lado a lado e refaz a conta.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ SERVIÇOS ============ -->
+  <section class="wrap sec" id="servicos">
+    <div class="sec__head rv">
+      <p class="lbl">O que fazemos</p>
+      <h2>Três frentes, e a gente cuida das três.</h2>
+      <p>
+        Energia é um dos insumos mais caros da sua empresa e costuma ficar no colo de
+        quem já tem outras dez prioridades. A ideia é simples: você tira isso da sua
+        lista e passa para a gente.
+      </p>
+    </div>
+
+    <div class="cards rv">
+      <article class="card">
+        <h3>Enquadramento tarifário</h3>
+        <p>
+          Refazemos a sua conta em cada modalidade possível, usando o consumo real dos
+          últimos doze meses. Se a troca compensar, a gente mesmo protocola o pedido
+          na distribuidora e acompanha até a fatura chegar corrigida.
+        </p>
+        <span class="card__meta">A gente cuida do protocolo</span>
+      </article>
+
+      <article class="card">
+        <h3>Conferência das faturas</h3>
+        <p>
+          Toda fatura passa por uma conferência contra a tarifa homologada, o contrato
+          de demanda e a medição registrada. Quando encontramos cobrança indevida,
+          montamos o pedido de ressarcimento com o cálculo e o histórico.
+        </p>
+        <span class="card__meta">Você não precisa abrir um PDF</span>
+      </article>
+
+      <article class="card">
+        <h3>Olho na demanda</h3>
+        <p>
+          Lemos o medidor a cada quinze minutos e acompanhamos demanda e reativo ao
+          longo do mês. Se algo começa a subir, você recebe uma mensagem no mesmo dia
+          — não uma surpresa na conta trinta dias depois.
+        </p>
+        <span class="card__meta">Aviso no WhatsApp, de gente para gente</span>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ GRUPO B ============ -->
+  <section class="wrap sec sec--edge" id="grupob">
+    <div class="sec__head rv">
+      <p class="lbl">Grupo B</p>
+      <h2>E se a sua conta for menor?</h2>
+      <p>
+        Comércio, escritório, clínica, padaria, propriedade rural. Quem é atendido em
+        baixa tensão não tem demanda contratada nem reativo — mas tem outras formas de
+        pagar a mais todo mês, e ninguém olha. Para esses, existe um plano simples.
+      </p>
+    </div>
+
+    <div class="plan rv">
+      <div class="plan__body">
+        <h3 class="plan__name">Núra Essencial</h3>
+        <p class="plan__desc">
+          A gente cuida da conta de luz do seu negócio por um valor menor que o de
+          quase qualquer erro que a gente encontre nela.
+        </p>
+        <ul class="plan__list">
+          <li>Conferência da fatura todo mês, contra a tarifa homologada e a bandeira do período</li>
+          <li>Revisão da subclasse tarifária — estar na classe errada custa caro e é mais comum do que parece</li>
+          <li>Estudo de tarifa branca: dizemos se compensa para o seu horário de funcionamento</li>
+          <li>Aviso quando o consumo fugir do padrão dos meses anteriores</li>
+          <li>Pedido de ressarcimento montado por nós quando houver cobrança indevida</li>
+        </ul>
+      </div>
+
+      <div class="plan__price">
+        <p class="plan__eyebrow">Primeiro mês</p>
+        <p class="plan__was">R$ 75</p>
+        <p class="plan__now">R$ 50</p>
+        <p class="plan__then">Depois, R$ 75 por mês, por unidade consumidora.</p>
+        <a class="btn btn--solid plan__cta"
+           href="https://wa.me/5553984742332?text=Ol%C3%A1%21%20Quero%20o%20plano%20Essencial%20do%20Grupo%20B%2C%20com%20o%20primeiro%20m%C3%AAs%20por%20R%24%2050."
+           target="_blank" rel="noopener">
+          <svg class="btn__ico" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
+          </svg>
+          Começar por R$ 50
+        </a>
+        <p class="plan__fine">Manda uma foto da sua conta de luz que a gente já começa.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROCESSO ============ -->
+  <section class="wrap sec sec--edge" id="processo">
+    <div class="sec__head rv">
+      <p class="lbl">Como funciona</p>
+      <h2>Três passos, e você aprova cada um.</h2>
+      <p>
+        Nenhuma etapa anda sozinha. Você sabe o prazo, sabe o que vai receber no fim
+        e decide se quer seguir.
+      </p>
+    </div>
+
+    <div class="steps">
+      <div class="step rv">
+        <span class="step__n">01</span>
+        <div class="step__body">
+          <h3>A gente olha</h3>
+          <p>
+            Você manda doze meses de faturas — só isso. Devolvemos um resumo do que
+            encontramos: onde está saindo dinheiro, quanto por ano, e com as contas
+            abertas para você conferir. Se não houver economia que valha a pena, a
+            gente fala isso na cara, e o diagnóstico continua sendo de graça.
+          </p>
+        </div>
+        <span class="step__when">5 dias úteis</span>
+      </div>
+
+      <div class="step rv">
+        <span class="step__n">02</span>
+        <div class="step__body">
+          <h3>A gente resolve</h3>
+          <p>
+            Com o seu aval, cuidamos do novo contrato de demanda, do pedido de mudança
+            de enquadramento e dos pedidos de ressarcimento, e acompanhamos cada
+            protocolo até a resposta chegar. Nenhuma obra, nenhuma parada, nenhuma
+            ligação sua para a distribuidora.
+          </p>
+        </div>
+        <span class="step__when">30 a 60 dias</span>
+      </div>
+
+      <div class="step rv">
+        <span class="step__n">03</span>
+        <div class="step__body">
+          <h3>A gente continua junto</h3>
+          <p>
+            Todo mês lemos o medidor, conferimos a fatura e avisamos se algo está
+            fugindo do previsto. No fechamento você recebe um resumo curto: o que foi
+            pago, o que foi evitado e o que ainda dá para melhorar.
+          </p>
+        </div>
+        <span class="step__when">Todo mês</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PERGUNTAS ============ -->
+  <section class="wrap sec sec--edge" id="perguntas">
+    <div class="sec__head rv">
+      <p class="lbl">Perguntas</p>
+      <h2>O que todo mundo pergunta na primeira conversa.</h2>
+    </div>
+
+    <div class="qa rv">
+      <div class="qa__item">
+        <h3>Preciso trocar de distribuidora?</h3>
+        <p>
+          Não. Você continua exatamente com quem já está. O que a gente mexe é no
+          contrato e na forma como você é cobrado, não em quem entrega a energia.
+        </p>
+      </div>
+      <div class="qa__item">
+        <h3>Vai ter obra ou parada de produção?</h3>
+        <p>
+          Não. Nada do que fazemos exige desligar máquina, trocar equipamento ou
+          interromper turno. É trabalho de papel, cálculo e acompanhamento.
+        </p>
+      </div>
+      <div class="qa__item">
+        <h3>Quando eu vejo diferença na conta?</h3>
+        <p>
+          Ajuste de demanda e de enquadramento costumam aparecer no ciclo seguinte à
+          aprovação da distribuidora. Ressarcimento de cobrança indevida demora mais,
+          porque depende do prazo de resposta dela — e a gente te mantém informado.
+        </p>
+      </div>
+      <div class="qa__item">
+        <h3>E se vocês não acharem nada?</h3>
+        <p>
+          Aí a gente diz isso e você não paga nada pelo diagnóstico. Preferimos perder
+          um cliente a inventar uma economia que não existe.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CTA FINAL ============ -->
+  <section class="wrap sec" id="contato">
+    <div class="close rv">
+      <div class="close__copy">
+        <p class="lbl">Próximo passo</p>
+        <h2>Manda as faturas. O resto é com a gente.</h2>
+        <p>
+          Não tem apresentação de uma hora nem proposta antes da hora. Você manda doze
+          meses de conta, a gente olha e volta com números — os seus, não uma média de
+          mercado.
+        </p>
+        <p class="close__sign">
+          Quem responde é uma pessoa da equipe, e é a mesma pessoa que vai te
+          acompanhar depois.
+        </p>
+      </div>
+      <div class="close__acts">
+        <a class="btn btn--solid" href="mailto:nuraenergia@gmail.com?subject=Quero%20um%20diagn%C3%B3stico">
+          Enviar minhas faturas <span class="btn__arrow" aria-hidden="true">&rarr;</span>
+        </a>
+        <a class="btn btn--ghost" href="https://wa.me/5553984742332?text=Ol%C3%A1%21%20Gostaria%20de%20um%20diagn%C3%B3stico%20da%20conta%20de%20energia%20da%20minha%20empresa."
+           target="_blank" rel="noopener">
+          <svg class="btn__ico" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
+          </svg>
+          (53) 98474-2332
+        </a>
+        <p class="close__fine">
+          Atendemos alta tensão (Grupo A) em todo o Brasil, e baixa tensão (Grupo B)
+          pelo plano Essencial. Não sabe em qual você está? Manda a fatura que a gente
+          olha.
+        </p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot__grid">
+    <a class="brand" href="#topo">
+      <svg class="mark" viewBox="0 0 24 24" aria-hidden="true">
+        <rect class="mark__field" x="0" y="0" width="24" height="24" rx="5"/>
+        <path class="mark__line" d="M4 18 L9.5 12.5 L13.5 6.8 L20 6.8"/>
+      </svg>
+      <span class="brand__txt">
+        <span class="brand__name">Núra</span>
+        <span class="brand__sub">Energia</span>
+      </span>
+    </a>
+    <ul class="foot__links">
+      <li><a href="#vazamentos">Onde vaza</a></li>
+      <li><a href="#servicos">O que fazemos</a></li>
+      <li><a href="#grupob">Grupo B</a></li>
+      <li><a href="#perguntas">Perguntas</a></li>
+      <li><a href="mailto:nuraenergia@gmail.com">nuraenergia@gmail.com</a></li>
+      <li><a href="https://wa.me/5553984742332" target="_blank" rel="noopener">WhatsApp (53) 98474-2332</a></li>
+    </ul>
+    <p class="lbl">&copy; 2026 Núra Energia</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+  /* ---------------- Menu responsivo ---------------- */
+  var toggle = document.getElementById("navToggle");
+  var links = document.getElementById("navLinks");
+
+  function setMenu(open) {
+    toggle.setAttribute("aria-expanded", open ? "true" : "false");
+    toggle.setAttribute("aria-label", open ? "Fechar menu" : "Abrir menu");
+    links.classList.toggle("open", open);
+  }
+
+  toggle.addEventListener("click", function () {
+    setMenu(toggle.getAttribute("aria-expanded") !== "true");
+  });
+
+  links.addEventListener("click", function (e) {
+    if (e.target.closest("a")) setMenu(false);
+  });
+
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && toggle.getAttribute("aria-expanded") === "true") {
+      setMenu(false);
+      toggle.focus();
+    }
+  });
+
+  window.addEventListener("resize", function () {
+    if (window.innerWidth > 860) setMenu(false);
+  });
+
+  /* ---------------- Curva de carga ----------------
+     Exemplo ilustrativo: demanda medida contra a demanda
+     contratada, com a faixa de ultrapassagem destacada.
+     ------------------------------------------------- */
+  var canvas = document.getElementById("loadChart");
+  var ctx = canvas.getContext("2d");
+
+  var BEFORE = [38,34,32,31,33,40,55,72,86,92,95,97,93,96,98,97,99,104,118,126,121,98,68,48];
+  var AFTER  = [30,27,26,25,27,33,45,59,70,75,77,79,76,78,80,79,80,82,86,88,85,76,55,39];
+  var DEMAND = 110;   // demanda contratada, kW
+  var Y_MAX  = 140;
+
+  var box = { w: 0, h: 0 };
+  var pad = { t: 30, r: 16, b: 26, l: 34 };
+  var progress = 0;
+
+  function tokens() {
+    var s = getComputedStyle(document.documentElement);
+    return {
+      accent: s.getPropertyValue("--accent-strong").trim(),
+      peak: s.getPropertyValue("--peak").trim(),
+      peakSoft: s.getPropertyValue("--peak-soft").trim(),
+      faint: s.getPropertyValue("--ink-3").trim(),
+      line2: s.getPropertyValue("--line-2").trim()
+    };
+  }
+
+  function x(hour) { return pad.l + (hour / 23) * (box.w - pad.l - pad.r); }
+  function y(kw)   { return pad.t + (1 - kw / Y_MAX) * (box.h - pad.t - pad.b); }
+
+  // Catmull-Rom → amostras densas, para desenho progressivo
+  function sample(values, steps) {
+    var pts = [];
+    for (var i = 0; i < values.length - 1; i++) {
+      var p0 = values[Math.max(0, i - 1)];
+      var p1 = values[i];
+      var p2 = values[i + 1];
+      var p3 = values[Math.min(values.length - 1, i + 2)];
+      for (var s = 0; s < steps; s++) {
+        var t = s / steps, t2 = t * t, t3 = t2 * t;
+        var v = 0.5 * ((2 * p1) + (-p0 + p2) * t +
+                (2 * p0 - 5 * p1 + 4 * p2 - p3) * t2 +
+                (-p0 + 3 * p1 - 3 * p2 + p3) * t3);
+        pts.push({ h: i + t, v: v });
+      }
+    }
+    pts.push({ h: values.length - 1, v: values[values.length - 1] });
+    return pts;
+  }
+
+  var beforePts = sample(BEFORE, 12);
+  var afterPts = sample(AFTER, 12);
+
+  function strokePath(pts, upTo) {
+    ctx.beginPath();
+    var n = Math.max(2, Math.floor(pts.length * upTo));
+    for (var i = 0; i < n; i++) {
+      var p = pts[i];
+      if (i === 0) ctx.moveTo(x(p.h), y(p.v));
+      else ctx.lineTo(x(p.h), y(p.v));
+    }
+    ctx.stroke();
+  }
+
+  // Preenche cada trecho em que a curva supera a demanda contratada
+  function fillOverage(pts, upTo) {
+    var n = Math.max(2, Math.floor(pts.length * upTo));
+    var run = null;
+    for (var i = 0; i < n; i++) {
+      if (pts[i].v > DEMAND) {
+        if (!run) run = [];
+        run.push(pts[i]);
+      } else if (run) {
+        paintRun(run);
+        run = null;
+      }
+    }
+    if (run) paintRun(run);
+  }
+
+  function paintRun(run) {
+    if (run.length < 2) return;
+    ctx.beginPath();
+    ctx.moveTo(x(run[0].h), y(DEMAND));
+    for (var i = 0; i < run.length; i++) ctx.lineTo(x(run[i].h), y(run[i].v));
+    ctx.lineTo(x(run[run.length - 1].h), y(DEMAND));
+    ctx.closePath();
+    ctx.fill();
+  }
+
+  function draw() {
+    var c = tokens();
+    ctx.clearRect(0, 0, box.w, box.h);
+
+    // grade
+    ctx.strokeStyle = c.line2;
+    ctx.lineWidth = 1;
+    [0, 70, 140].forEach(function (v) {
+      ctx.beginPath();
+      ctx.moveTo(pad.l, Math.round(y(v)) + 0.5);
+      ctx.lineTo(box.w - pad.r, Math.round(y(v)) + 0.5);
+      ctx.stroke();
+    });
+
+    // rótulos dos eixos
+    ctx.fillStyle = c.faint;
+    ctx.font = "500 10px Consolas, 'SF Mono', Menlo, monospace";
+    ctx.textBaseline = "middle";
+    ctx.textAlign = "right";
+    [0, 70, 140].forEach(function (v) { ctx.fillText(String(v), pad.l - 8, y(v)); });
+    ctx.textAlign = "center";
+    ctx.textBaseline = "top";
+    [0, 6, 12, 18, 23].forEach(function (h) {
+      ctx.fillText((h === 23 ? "24" : ("0" + h).slice(-2)) + "h", x(h), box.h - pad.b + 8);
+    });
+
+    // ultrapassagem
+    ctx.fillStyle = c.peakSoft;
+    fillOverage(beforePts, progress);
+
+    // linha da demanda contratada
+    ctx.save();
+    ctx.setLineDash([5, 4]);
+    ctx.strokeStyle = c.peak;
+    ctx.lineWidth = 1.25;
+    ctx.beginPath();
+    ctx.moveTo(pad.l, Math.round(y(DEMAND)) + 0.5);
+    ctx.lineTo(box.w - pad.r, Math.round(y(DEMAND)) + 0.5);
+    ctx.stroke();
+    ctx.restore();
+
+    ctx.fillStyle = c.peak;
+    ctx.font = "600 10px Consolas, 'SF Mono', Menlo, monospace";
+    ctx.textAlign = "left";
+    ctx.textBaseline = "bottom";
+    ctx.fillText("contratado " + DEMAND + " kW", pad.l + 4, y(DEMAND) - 5);
+
+    // linha "antes" — tracejada, discreta
+    ctx.save();
+    ctx.setLineDash([4, 4]);
+    ctx.strokeStyle = c.faint;
+    ctx.lineWidth = 1.5;
+    ctx.lineJoin = "round";
+    strokePath(beforePts, progress);
+    ctx.restore();
+
+    // linha "com a Núra" — o dourado da marca
+    ctx.strokeStyle = c.accent;
+    ctx.lineWidth = 2.5;
+    ctx.lineJoin = "round";
+    ctx.lineCap = "round";
+    strokePath(afterPts, progress);
+
+    // marcadores no pico, só quando o traço já passou por lá
+    var peakHour = 19;
+    if (progress >= 0.92) {
+      var px = x(peakHour);
+
+      ctx.fillStyle = c.peak;
+      ctx.beginPath();
+      ctx.arc(px, y(BEFORE[peakHour]), 3, 0, Math.PI * 2);
+      ctx.fill();
+
+      ctx.fillStyle = c.accent;
+      ctx.beginPath();
+      ctx.arc(px, y(AFTER[peakHour]), 3.5, 0, Math.PI * 2);
+      ctx.fill();
+
+      ctx.fillStyle = c.peak;
+      ctx.font = "600 11px Consolas, 'SF Mono', Menlo, monospace";
+      ctx.textAlign = "right";
+      ctx.textBaseline = "bottom";
+      ctx.fillText("passou do contratado", box.w - pad.r, y(BEFORE[peakHour]) - 8);
+    }
+  }
+
+  function resize() {
+    var rect = canvas.getBoundingClientRect();
+    var dpr = window.devicePixelRatio || 1;
+    box.w = rect.width;
+    box.h = rect.height;
+    canvas.width = Math.round(rect.width * dpr);
+    canvas.height = Math.round(rect.height * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    draw();
+  }
+
+  function animate() {
+    var t0 = null, dur = 1500;
+    function frame(ts) {
+      if (t0 === null) t0 = ts;
+      var k = Math.min(1, (ts - t0) / dur);
+      progress = 1 - Math.pow(1 - k, 3);   // easeOutCubic
+      draw();
+      if (k < 1) requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  }
+
+  window.addEventListener("resize", resize);
+  if (window.matchMedia) {
+    var dm = window.matchMedia("(prefers-color-scheme: dark)");
+    if (dm.addEventListener) dm.addEventListener("change", draw);
+  }
+  new MutationObserver(draw).observe(document.documentElement, {
+    attributes: true, attributeFilter: ["data-theme"]
+  });
+
+  resize();
+  if (reduce.matches) { progress = 1; draw(); } else { animate(); }
+
+  /* ---------------- Reveal ao rolar ---------------- */
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add("in");
+      io.unobserve(entry.target);
+    });
+  }, { rootMargin: "0px 0px -12% 0px", threshold: 0.15 });
+
+  document.querySelectorAll(".rv").forEach(function (el) { io.observe(el); });
+})();
+</script>
+</body>
+</html>
